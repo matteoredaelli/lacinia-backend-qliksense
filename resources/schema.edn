@@ -1,0 +1,18 @@
+{
+ :objects {:qliksense_stream {
+                              :fields {:id {:type String}
+                                       :name {:type String}
+                                       :schemaPath {:type String}
+                                       :tags {:type (list String)}
+                                       :modifiedDate {:type String}
+                                       :createdDate {:type String}
+                                       :modifiedByUserName {:type String}
+                                       }
+                              }
+           }
+ :queries {:qliksense_streams {:type (list :qliksense_stream)
+                               :args {:system {:type String}
+                                      :filter {:type String}}
+                               :resolve :resolve-query-qliksense-streams}
+           }
+ }
