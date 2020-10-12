@@ -1,5 +1,19 @@
 {
- :objects {:qliksense_stream {
+ :objects {
+           :qliksense_app {
+                           :fields {:id {:type String}
+                                    :name {:type String}
+                                    :schemaPath {:type String}
+                                    :tags {:type (list String)}
+                                    :modifiedDate {:type String}
+                                    :createdDate {:type String}
+                                    :modifiedByUserName {:type String}
+                                    :owner {:type :qliksense_user}
+                                    :customProperties {:type (list :qliksense_custom_property_value)}
+                                    :published {:type Boolean}
+                                    }
+                              }
+           :qliksense_stream {
                               :fields {:id {:type String}
                                        :name {:type String}
                                        :schemaPath {:type String}
@@ -7,12 +21,75 @@
                                        :modifiedDate {:type String}
                                        :createdDate {:type String}
                                        :modifiedByUserName {:type String}
+                                       :owner {:type :qliksense_user}
+                                       :customProperties {:type (list :qliksense_custom_property_value)}
                                        }
                               }
+           :qliksense_custom_property_definition {
+                                                  :fields {:id {:type String}
+                                                           :name {:type String}
+                                                           :schemaPath {:type String}
+                                                           :objectTypes {:type (list String)}
+                                                           :modifiedDate {:type String}
+                                                           :createdDate {:type String}
+                                                           :owner {:type :qliksense_user}
+                                                           :modifiedByUserName {:type String}
+                                                           :choiceValues {:type (list String)}
+                                                           }
+                                                  }
+           :qliksense_custom_property_value {
+                                             :fields {:id {:type String}
+                                                      :value {:type String}
+                                                      :schemaPath {:type String}
+                                                      :modifiedDate {:type String}
+                                                      :createdDate {:type String}
+                                                      :modifiedByUserName {:type String}
+                                                      :definition {:type :qliksense_custom_property_definition}
+                                                      }
+                                             }
+           :qliksense_user {
+                            :fields {:id {:type String}
+                                     :name {:type String}
+                                     :userId {:type String}
+                                     :userDirectory {:type String}
+                                     :schemaPath {:type String}
+                                     :attributes {:type (list :qliksense_user_attribute)}
+                                     :customProperties {:type (list :qliksense_custom_property_value)}
+                                     :modifiedDate {:type String}
+                                     :createdDate {:type String}
+                                     :modifiedByUserName {:type String}
+                                     :removedExternally {:type Boolean}
+                                     :inactive {:type Boolean}
+                                     }
+                            }
+           :qliksense_user_attribute {
+                                      :fields {:id {:type String}
+                                               :externalId {:type String}
+                                               :schemaPath {:type String}
+                                               :attributeType {:type String}
+                                               :attributeValue{:type String}
+                                               :modifiedDate {:type String}
+                                               :createdDate {:type String}
+                                               :modifiedByUserName {:type String}
+                                               }
+                                      }
            }
- :queries {:qliksense_streams {:type (list :qliksense_stream)
+ :queries {:qliksense_custom_property_definitions {:type (list :qliksense_custom_property_definition)
+                                                   :args {:system {:type String}
+                                                          :filter {:type String}}
+                                                   :resolve :resolve-query-qliksense-custom-property-definitions}
+           :qliksense_apps {:type (list :qliksense_app)
+                            :args {:system {:type String}
+                                   :filter {:type String}}
+                            :resolve :resolve-query-qliksense-apps}
+           :qliksense_streams {:type (list :qliksense_stream)
                                :args {:system {:type String}
                                       :filter {:type String}}
                                :resolve :resolve-query-qliksense-streams}
+           :qliksense_users {:type (list :qliksense_user)
+                             :args {:system {:type String}
+                                    :filter {:type String}}
+                             :resolve :resolve-query-qliksense-users}
+
            }
  }
