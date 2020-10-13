@@ -1,5 +1,8 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        com.walmartlabs/lacinia  {:mvn/version "0.38.0-alpha-3"}
+        com.walmartlabs/lacinia-pedestal  {:mvn/version "0.15.0-alpha-2"}
+        com.stuartsierra/component {:mvn/version "0.3.2"}
         matteoredaelli/qliksense {:mvn/version "0.3.0"}
         }
  :aliases
@@ -12,13 +15,13 @@
    :main-opts ["-m" "cognitect.test-runner"
                "-d" "test"]}
   :jar {:extra-deps {seancorfield/depstar {:mvn/version "1.1.104"}}
-        :main-opts ["-m" "hf.depstar.jar" "lacinia-backends-qliksense.jar"]}
+        :main-opts ["-m" "hf.depstar.jar" "lacinia-backend-qliksense.jar"]}
   :install {:extra-deps {deps-deploy/deps-deploy {:mvn/version "0.0.9"}}
-            :main-opts ["-m" "deps-deploy.deps-deploy" "install" "lacinia-backends-qliksense.jar"]}
+            :main-opts ["-m" "deps-deploy.deps-deploy" "install" "lacinia-backend-qliksense.jar"]}
   :deploy {:extra-deps {deps-deploy/deps-deploy {:mvn/version "0.0.9"}}
-           :main-opts ["-m" "deps-deploy.deps-deploy" "deploy" "lacinia-backends-qliksense.jar"]}
+           :main-opts ["-m" "deps-deploy.deps-deploy" "deploy" "lacinia-backend-qliksense.jar"]}
   :uberjar {:extra-deps {seancorfield/depstar {:mvn/version "1.1.104"}}
-            :main-opts ["-m" "hf.depstar.uberjar" "lacinia-backends-qliksense.jar"
-                        "-C" "-m" "matteoredaelli.lacinia-backends-qliksense"]}
+            :main-opts ["-m" "hf.depstar.uberjar" "lacinia-backend-qliksense.jar"
+                        "-C" "-m" "matteoredaelli.lacinia-backend-qliksense"]}
   }
  }

@@ -4,17 +4,17 @@ FIXME: my new application.
 
 ## Installation
 
-Download from https://github.com/matteoredaelli/lacinia-backends-qliksense.
+Download from https://github.com/matteoredaelli/lacinia-backend-qliksense.
 
 ## Usage
 
-export LACINIA_BACKENDS_QLIKSENSE_CONFIG=/home/matteo/src/github/lacinia-backends-qliksense-config.edn
+export LACINIA_BACKEND_QLIKSENSE_CONFIG=/home/matteo/src/github/lacinia-backend-qliksense-config.edn
 
 FIXME: explanation
 
 Run the project directly:
 
-    $ clojure -m matteoredaelli.lacinia-backends-qliksense
+    $ clojure -m matteoredaelli.lacinia-backend-qliksense
 
 Run the project's tests (they'll fail until you edit them):
 
@@ -26,7 +26,7 @@ Build an uberjar:
 
 Run that uberjar:
 
-    $ java -jar lacinia-backends-qliksense.jar
+    $ java -jar lacinia-backend-qliksense.jar
 
 ## Options
 
