@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>matteoredaelli</groupId>
-  <artifactId>lacinia-backends-qliksense</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
-  <name>matteoredaelli/lacinia-backends-qliksense</name>
-  <description>Lacinia backend for Qliksense Repository api</description>
-  <url>https://github.com/matteoredaelli/lacinia-backends-qliksense</url>
+  <artifactId>lacinia-backend-qliksense</artifactId>
+  <version>0.3.0-SNAPSHOT</version>
+  <name>matteoredaelli/lacinia-backend-qliksense</name>
+  <description>Lacinia backend for querying Qliksense Repository api</description>
+  <url>https://github.com/matteoredaelli/lacinia-backend-qliksense</url>
   <licenses>
     <license>
       <name>Eclipse Public License</name>
@@ -15,13 +15,13 @@
   </licenses>
   <developers>
     <developer>
-      <name>Matteo</name>
+      <name>Matteo Redaelli</name>
     </developer>
   </developers>
   <scm>
-    <url>https://github.com/matteoredaelli/lacinia-backends-qliksense</url>
-    <connection>scm:git:git://github.com/matteoredaelli/lacinia-backends-qliksense.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/matteoredaelli/lacinia-backends-qliksense.git</developerConnection>
+    <url>https://github.com/matteoredaelli/lacinia-backend-qliksense</url>
+    <connection>scm:git:git://github.com/matteoredaelli/lacinia-backend-qliksense.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/matteoredaelli/lacinia-backend-qliksense.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
   <dependencies>

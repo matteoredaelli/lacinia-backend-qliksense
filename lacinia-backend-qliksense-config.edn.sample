@@ -1,0 +1,19 @@
+{
+ :verbosity "DEBUG"
+ :systems {
+           :system1 {
+                   :base-url "https://system1.example.com:4242"
+                   :keystore "/home/matteo/certificates/system1/system1.pfx"
+                   :keystore-pass "changeit"
+                   :trust-store "/home/matteo/certificates/system1/truststore.pfx"
+                   :trust-store-pass "changeme"
+                   }
+           :system2 {
+                  :base-url "https://system2.example.com:4242"
+                  :keystore "/home/matteo/certificates/system2/system2.pfx"
+                  :keystore-pass "changeme"
+                  :trust-store "/home/matteo/certificates/system2/truststore.pfx"
+                  :trust-store-pass "changeit"
+                  }
+           }
+ }
