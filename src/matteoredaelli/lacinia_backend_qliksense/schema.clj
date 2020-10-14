@@ -16,14 +16,17 @@
 (defn query-qliksense-apps
   [backend]
   (fn [context arguments value]
-    (print backend)
-    (print arguments)
     (qliksense-get-objects backend context arguments value "/qrs/app/full")))
 
 (defn query-qliksense-custom-property-definitions
   [backend]
   (fn [context arguments value]
     (qliksense-get-objects backend context arguments value "/qrs/custompropertydefinition/full")))
+
+(defn query-qliksense-reload-tasks
+  [backend]
+  (fn [context arguments value]
+    (qliksense-get-objects backend context arguments value "/qrs/reloadtask/full")))
 
 (defn query-qliksense-streams
   [backend]
@@ -42,6 +45,7 @@
     {
      :query/qliksense-apps (query-qliksense-apps backend)
      :query/qliksense-custom-property-definitions (query-qliksense-custom-property-definitions backend)
+     :query/qliksense-reload-tasks (query-qliksense-reload-tasks backend)
      :query/qliksense-streams (query-qliksense-streams backend)
      :query/qliksense-users (query-qliksense-users backend)
      }

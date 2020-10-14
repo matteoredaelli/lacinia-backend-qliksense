@@ -9,10 +9,25 @@
                                     :createdDate {:type String}
                                     :modifiedByUserName {:type String}
                                     :owner {:type :QliksenseUser}
+                                    :stream {:type :QliksenseStream}
                                     :customProperties {:type (list :QliksenseCustomPropertyValue)}
                                     :published {:type Boolean}
                                     }
-                              }
+                          }
+            :QliksenseReloadTask {
+                                  :fields {:id {:type String}
+                                           :name {:type String}
+                                           :schemaPath {:type String}
+                                           :taskType {:type Int}
+                                           :tags {:type (list String)}
+                                           :modifiedDate {:type String}
+                                           :createdDate {:type String}
+                                           :modifiedByUserName {:type String}
+                                           :app {:type :QliksenseApp}
+                                           :customProperties {:type (list :QliksenseCustomPropertyValue)}
+                                           :enabled {:type Boolean}
+                                           }
+                                  }
            :QliksenseStream {
                               :fields {:id {:type String}
                                        :name {:type String}
@@ -82,6 +97,10 @@
                             :args {:system {:type String}
                                    :filter {:type String}}
                             :resolve :query/qliksense-apps}
+           :qliksense_reload_tasks {:type (list :QliksenseReloadTask)
+                                    :args {:system {:type String}
+                                           :filter {:type String}}
+                                    :resolve :query/qliksense-reload-tasks}
            :qliksense_streams {:type (list :QliksenseStream)
                                :args {:system {:type String}
                                       :filter {:type String}}
