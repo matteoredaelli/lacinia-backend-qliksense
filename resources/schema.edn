@@ -38,6 +38,7 @@
                                        :modifiedByUserName {:type String}
                                        :owner {:type :QliksenseUser}
                                        :customProperties {:type (list :QliksenseCustomPropertyValue)}
+                                       :ldapGroups {:type (list String) :resolve :QliksenseStream/ldap-groups}
                                        }
                               }
            :QliksenseCustomPropertyDefinition {

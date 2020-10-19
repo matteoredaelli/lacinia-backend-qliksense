@@ -13,6 +13,15 @@
   (let [{:keys [system filter]} arguments]
     (backend/get-objects-by-filter backend (keyword system) path filter)))
 
+(defn qliksense-stream-ldap-groups
+  [backend]
+  (fn [context arguments value]
+    (let [customProperties (:customProperties value)]
+      ;,(filter #(= (get-in % [:definition :name]) "GroupAccess"))
+      (map :value
+           (filter #(= (get-in % [:definition :name]) "GroupAccess")
+                   customProperties)))))
+
 (defn query-qliksense-apps
   [backend]
   (fn [context arguments value]
@@ -43,6 +52,7 @@
   [component]
   (let [backend (:backend component)]
     {
+     :QliksenseStream/ldap-groups (qliksense-stream-ldap-groups backend)
      :query/qliksense-apps (query-qliksense-apps backend)
      :query/qliksense-custom-property-definitions (query-qliksense-custom-property-definitions backend)
      :query/qliksense-reload-tasks (query-qliksense-reload-tasks backend)
@@ -51,11 +61,15 @@
      }
     ))
 
-(defn load-schema
+(defn get-schema
   [component]
   (-> (io/resource "schema.edn")
       slurp
-      edn/read-string
+      edn/read-string))
+
+(defn load-schema
+  [component]
+  (-> (get-schema component)
       (util/attach-resolvers (resolver-map component))
       schema/compile))
 
