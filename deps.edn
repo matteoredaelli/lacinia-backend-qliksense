@@ -21,7 +21,7 @@
   :deploy {:extra-deps {deps-deploy/deps-deploy {:mvn/version "0.0.9"}}
            :main-opts ["-m" "deps-deploy.deps-deploy" "deploy" "lacinia-backend-qliksense.jar"]}
   :uberjar {:extra-deps {seancorfield/depstar {:mvn/version "1.1.104"}}
-            :main-opts ["-m" "hf.depstar.uberjar" "lacinia-backend-qliksense.jar"
+            :main-opts ["-m" "hf.depstar.uberjar" "lacinia-backend-qliksense-with-deps.jar"
                         "-C" "-m" "matteoredaelli.lacinia-backend-qliksense"]}
   }
  }

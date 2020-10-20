@@ -1,9 +1,8 @@
 # lacinia-backends-qliksense
 
-FIXME: my new application.
+SPARQL backend for qliksense Repository api
 
 ## Installation
-
 
 
 ## Usage

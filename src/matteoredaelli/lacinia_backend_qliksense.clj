@@ -1,7 +1,9 @@
 (ns matteoredaelli.lacinia-backend-qliksense
   (:require [matteoredaelli.lacinia-backend-qliksense.system :as system]
             [com.stuartsierra.component :as component]
-            ))
+            )
+ (:gen-class) 
+  )
 
 
 (defn ^:private my-system
