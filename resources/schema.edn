@@ -1,20 +1,20 @@
 {
  :objects {
-           :QliksenseApp {
-                           :fields {:id {:type String}
-                                    :name {:type String}
-                                    :schemaPath {:type String}
-                                    :tags {:type (list String)}
-                                    :modifiedDate {:type String}
-                                    :createdDate {:type String}
-                                    :modifiedByUserName {:type String}
-                                    :owner {:type :QliksenseUser}
-                                    :stream {:type :QliksenseStream}
-                                    :customProperties {:type (list :QliksenseCustomPropertyValue)}
-                                    :published {:type Boolean}
-                                    }
+           :QliksenseApp {:description "Qliksense Application"
+                          :fields {:id {:type String}
+                                   :name {:type String}
+                                   :schemaPath {:type String}
+                                   :tags {:type (list String)}
+                                   :modifiedDate {:type String}
+                                   :createdDate {:type String}
+                                   :modifiedByUserName {:type String}
+                                   :owner {:type :QliksenseUser}
+                                   :stream {:type :QliksenseStream}
+                                   :customProperties {:type (list :QliksenseCustomPropertyValue)}
+                                   :published {:type Boolean}
+                                   }
                           }
-            :QliksenseReloadTask {
+            :QliksenseReloadTask {:description "Qliksense Reload Task"
                                   :fields {:id {:type String}
                                            :name {:type String}
                                            :schemaPath {:type String}
@@ -28,7 +28,7 @@
                                            :enabled {:type Boolean}
                                            }
                                   }
-           :QliksenseStream {
+           :QliksenseStream {:description "Qliksense Stream"
                               :fields {:id {:type String}
                                        :name {:type String}
                                        :schemaPath {:type String}
@@ -41,54 +41,58 @@
                                        :ldapGroups {:type (list String) :resolve :QliksenseStream/ldap-groups}
                                        }
                               }
-           :QliksenseCustomPropertyDefinition {
-                                                  :fields {:id {:type String}
-                                                           :name {:type String}
-                                                           :schemaPath {:type String}
-                                                           :objectTypes {:type (list String)}
-                                                           :modifiedDate {:type String}
-                                                           :createdDate {:type String}
-                                                           :owner {:type :QliksenseUser}
-                                                           :modifiedByUserName {:type String}
-                                                           :choiceValues {:type (list String)}
-                                                           }
-                                                  }
-           :QliksenseCustomPropertyValue {
-                                             :fields {:id {:type String}
-                                                      :value {:type String}
-                                                      :schemaPath {:type String}
-                                                      :modifiedDate {:type String}
-                                                      :createdDate {:type String}
-                                                      :modifiedByUserName {:type String}
-                                                      :definition {:type :QliksenseCustomPropertyDefinition}
-                                                      }
-                                             }
-           :QliksenseUser {
-                            :fields {:id {:type String}
-                                     :name {:type String}
-                                     :userId {:type String}
-                                     :userDirectory {:type String}
-                                     :schemaPath {:type String}
-                                     :attributes {:type (list :QliksenseUserAttribute)}
-                                     :customProperties {:type (list :QliksenseCustomPropertyValue)}
-                                     :modifiedDate {:type String}
-                                     :createdDate {:type String}
-                                     :modifiedByUserName {:type String}
-                                     :removedExternally {:type Boolean}
-                                     :inactive {:type Boolean}
-                                     }
-                            }
-           :QliksenseUserAttribute {
-                                      :fields {:id {:type String}
-                                               :externalId {:type String}
-                                               :schemaPath {:type String}
-                                               :attributeType {:type String}
-                                               :attributeValue{:type String}
-                                               :modifiedDate {:type String}
-                                               :createdDate {:type String}
-                                               :modifiedByUserName {:type String}
+           :QliksenseCustomPropertyDefinition {:description "Qliksense Custom Property Definition"
+                                               :fields {:id {:type String}
+                                                        :name {:type String}
+                                                        :schemaPath {:type String}
+                                                        :objectTypes {:type (list String)}
+                                                        :modifiedDate {:type String}
+                                                        :createdDate {:type String}
+                                                        :owner {:type :QliksenseUser}
+                                                        :modifiedByUserName {:type String}
+                                                        :choiceValues {:type (list String)}
+                                                        }
                                                }
-                                      }
+           :QliksenseCustomPropertyValue {:description "Qliksense Custom Property Value"
+                                          :fields {:id {:type String}
+                                                   :value {:type String}
+                                                   :schemaPath {:type String}
+                                                   :modifiedDate {:type String}
+                                                   :createdDate {:type String}
+                                                      :modifiedByUserName {:type String}
+                                                   :definition {:type :QliksenseCustomPropertyDefinition}
+                                                   }
+                                          }
+           :QliksenseUser {:description "Qliksense User"
+                           :fields {:id {:type String}
+                                    :name {:type String}
+                                    :userId {:type String}
+                                    :userDirectory {:type String}
+                                    :schemaPath {:type String}
+                                    :attributes {:description "Usually the imported active directory groups the user belongs to"
+                                                 :type (list :QliksenseUserAttribute)}
+                                    :ldapGroups {:description "LDAP groups starting with Qliksense_"
+                                                 :type (list String)
+                                                 :resolve :QliksenseUser/ldap-qliksense-groups}
+                                    :customProperties {:type (list :QliksenseCustomPropertyValue)}
+                                    :modifiedDate {:type String}
+                                    :createdDate {:type String}
+                                    :modifiedByUserName {:type String}
+                                    :removedExternally {:type Boolean}
+                                    :inactive {:type Boolean}
+                                    }
+                           }
+           :QliksenseUserAttribute {:description "Qliksense Attribute"
+                                    :fields {:id {:type String}
+                                             :externalId {:type String}
+                                             :schemaPath {:type String}
+                                             :attributeType {:type String}
+                                             :attributeValue{:type String}
+                                             :modifiedDate {:type String}
+                                             :createdDate {:type String}
+                                             :modifiedByUserName {:type String}
+                                             }
+                                    }
            }
  :queries {:qliksense_custom_property_definitions {:type (list :QliksenseCustomPropertyDefinition)
                                                    :args {:system {:type String}

@@ -22,6 +22,14 @@
            (filter #(= (get-in % [:definition :name]) "GroupAccess")
                    customProperties)))))
 
+(defn qliksense-user-ldap-qliksense-groups
+  [backend]
+  (fn [context arguments value]
+    (let [attributes (:attributes value)]
+      (filter #(clojure.string/starts-with? (clojure.string/upper-case %)
+                                            "QLIKSENSE_")
+              (map :attributeValue attributes)))))
+
 (defn query-qliksense-apps
   [backend]
   (fn [context arguments value]
@@ -53,6 +61,7 @@
   (let [backend (:backend component)]
     {
      :QliksenseStream/ldap-groups (qliksense-stream-ldap-groups backend)
+     :QliksenseUser/ldap-qliksense-groups (qliksense-user-ldap-qliksense-groups backend)
      :query/qliksense-apps (query-qliksense-apps backend)
      :query/qliksense-custom-property-definitions (query-qliksense-custom-property-definitions backend)
      :query/qliksense-reload-tasks (query-qliksense-reload-tasks backend)
