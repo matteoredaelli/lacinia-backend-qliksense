@@ -89,7 +89,7 @@
   component/Lifecycle
 
   (start [this]
-    (assoc this :qliksense-schema (get-schema this)))
+    (assoc this :qliksense-schema (load-schema this)))
 
   (stop [this]
     (assoc this :qliksense-schema nil)))
