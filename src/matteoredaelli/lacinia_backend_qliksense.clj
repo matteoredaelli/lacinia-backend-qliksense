@@ -2,7 +2,7 @@
   (:require [matteoredaelli.lacinia-backend-qliksense.system :as system]
             [com.stuartsierra.component :as component]
             )
- (:gen-class) 
+ (:gen-class)
   )
 
 
@@ -11,7 +11,7 @@
   the HTTP port won't conflict with a default running system."
   []
   (-> (system/new-system)
-      (assoc-in [:server :port] 8888)))
+      (assoc-in [:qliksense-server :port] 8801)))
 
 (def ^:dynamic ^:private *system*)
 

@@ -31,7 +31,7 @@
 
 (defn new-backend
   []
-  {:backend (map->QliksenseBackend {})})
+  {:qliksense-backend (map->QliksenseBackend {})})
 
 
 (defn get-objects-by-filter

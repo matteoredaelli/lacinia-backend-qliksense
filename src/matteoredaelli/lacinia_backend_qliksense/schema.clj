@@ -58,7 +58,7 @@
 
 (defn resolver-map
   [component]
-  (let [backend (:backend component)]
+  (let [backend (:qliksense-backend component)]
     {
      :QliksenseStream/ldap-groups (qliksense-stream-ldap-groups backend)
      :QliksenseUser/ldap-qliksense-groups (qliksense-user-ldap-qliksense-groups backend)
@@ -72,12 +72,13 @@
 
 (defn get-schema
   [component]
-  (-> (io/resource "schema.edn")
+  (-> (io/resource "qliksense-schema.edn")
       slurp
       edn/read-string))
 
 (defn load-schema
   [component]
+
   (-> (get-schema component)
       (util/attach-resolvers (resolver-map component))
       schema/compile))
@@ -88,13 +89,13 @@
   component/Lifecycle
 
   (start [this]
-    (assoc this :schema (load-schema this)))
+    (assoc this :qliksense-schema (get-schema this)))
 
   (stop [this]
-    (assoc this :schema nil)))
+    (assoc this :qliksense-schema nil)))
 
 (defn new-schema-provider
   []
   {:schema-provider (-> {}
                         map->SchemaProvider
-                        (component/using [:backend]))})
+                        (component/using [:qliksense-backend]))})
